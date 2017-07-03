@@ -1,5 +1,3 @@
-'use strict'
-
 const Promise = require('bluebird');
 const Glue = require('glue');
 
@@ -14,9 +12,8 @@ let plugins = [
 const manifestOptions = {
     connections: [
         {
-            // TODO: Use .env file
-            port: '3000',
-            host: 'localhost',
+            port: process.env.PORT,
+            host: process.env.HOST,
             routes: {
                 cors: {
                     origin: ['*'],
