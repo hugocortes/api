@@ -37,6 +37,21 @@ const start = async function() {
       handler: (request, h) => h.response()      
     });
 
+    finalServer.route({
+      method: 'GET',
+      path: '/env',
+      handler: (request, h) => {
+        const response = {
+          LOG_LEVEL: process.env.LOG_LEVEL,
+          PORT: process.env.PORT,
+          HOST: process.env.HOST,
+          SECRET: process.env.SECRET
+        };
+
+        return response;
+      }
+    });
+
     if (['info', 'verbose', 'debug', 'db'].indexOf(process.env.LOG_LEVEL > -1)) {
       finalServer.events.on('response', (req) => {
         finalServer.plugins.utils.logger.info(
@@ -47,6 +62,7 @@ const start = async function() {
 
     await finalServer.start();
     finalServer.plugins.utils.logger.info(`service running on ${finalServer.info.uri}`);
+    finalServer.plugins.utils.logger.verbose(`kubernetes secret: ${process.env.SECRET}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
