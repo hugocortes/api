@@ -19,22 +19,25 @@ const manifestOptions = {
   register: {
     plugins
   }
-}
+};;
 
 const glueOptions = {
   relativeTo: `${__dirname}/modules`
-}
+};;
 
 let finalServer = null;
 
 const start = async function() {
   try {
-    finalServer = await Glue.compose(manifestOptions, glueOptions);
+    finalServer = await Glue.compose(
+      manifestOptions,
+      glueOptions
+    );
 
     finalServer.route({
       method: 'GET',
       path: '/status',
-      handler: (request, h) => h.response()      
+      handler: (request, h) => h.response()
     });
 
     finalServer.route({
@@ -52,28 +55,36 @@ const start = async function() {
       }
     });
 
-    if (['info', 'verbose', 'debug', 'db'].indexOf(process.env.LOG_LEVEL > -1)) {
-      finalServer.events.on('response', (req) => {
+    if (
+      ['info', 'verbose', 'debug', 'db'].indexOf(process.env.LOG_LEVEL > -1)
+    ) {
+      finalServer.events.on('response', req => {
         finalServer.plugins.utils.logger.info(
-          `${req.method.toUpperCase()} ${req.response.statusCode} -> ${req.path} ${JSON.stringify(req.query)}`
+          `${req.method.toUpperCase()} ${req.response.statusCode} -> ${
+            req.path
+          } ${JSON.stringify(req.query)}`
         );
       });
     }
 
     await finalServer.start();
-    finalServer.plugins.utils.logger.info(`service running on ${finalServer.info.uri}`);
-    finalServer.plugins.utils.logger.verbose(`kubernetes secret: ${process.env.SECRET}`);
+    finalServer.plugins.utils.logger.info(
+      `service running on ${finalServer.info.uri}`
+    );
+    finalServer.plugins.utils.logger.verbose(
+      `kubernetes secret: ${process.env.SECRET}`
+    );
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
-}
+};
 
 const stop = async function() {
   return await finalServer.stop();
-}
+};
 
 module.exports = {
   start,
   stop
-}
+};;

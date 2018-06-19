@@ -5,7 +5,7 @@ async function getStorm(request, h) {
   try {
     const response = await this.methods.storm.get();
     return h.response(response);
-  } catch(err) {
+  } catch (err) {
     this.plugins.utils.logger.error(err);
     throw err;
   }
@@ -19,7 +19,7 @@ function setupGetStorm(server) {
     config: {
       bind: server
     }
-  })
+  });
 }
 
 function initialize(server) {

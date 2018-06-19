@@ -12,15 +12,13 @@ const options = {
     timestamp: () => new Date().toLocaleTimeString(),
     colorize: true,
     level: process.env.LOG_LEVEL || 'error',
-    stderrLevels: ['error']      
+    stderrLevels: ['error']
   }
 };
 
-const logger = new (winston.Logger)({
+const logger = new winston.Logger({
   levels: options.levels,
-  transports: [
-    new winston.transports.Console(options.console)
-  ]
+  transports: [new winston.transports.Console(options.console)]
 });
 
 module.exports = logger;

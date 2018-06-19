@@ -1,4 +1,3 @@
-
 function getStorm() {
   return new Promise(resolve => resolve({ ping: 'pong' }));
 }
