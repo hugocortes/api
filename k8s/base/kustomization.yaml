@@ -1,0 +1,6 @@
+commonLabels:
+  app: api-js
+resources:
+- deployment.yaml
+- configMap.yaml
+- service.yaml

@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: api-js
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-js
+      role: backend
+      env: local
+  template:
+    metadata:
+      name: api-js
+      labels:
+        app: api-js
+        role: backend
+        env: local
+    spec:
+      containers:
+        - name: api-js
+          image: docker.io/hugocortes/api-js
+          ports:
+          - containerPort: 3000
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: api-js-config
+                  key: PORT
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: api-js-config
+                  key: HOST
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: api-js-config
+                  key: LOG_LEVEL

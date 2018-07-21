@@ -1,4 +1,4 @@
-FROM node:9.11.1
+FROM node:9.11-alpine
 
 RUN mkdir /app
 RUN mkdir /app/bin
