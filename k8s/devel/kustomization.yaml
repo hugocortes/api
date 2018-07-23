@@ -1,0 +1,6 @@
+commonLabels:
+  app: api-js
+bases:
+- ./../base
+patches:
+- configMap.yaml
