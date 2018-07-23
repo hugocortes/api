@@ -18,23 +18,24 @@ spec:
         env: local
     spec:
       containers:
-        - name: api-js
-          image: docker.io/hugocortes/api-js
-          ports:
-          - containerPort: 3000
-          env:
-            - name: PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: api-js-config
-                  key: PORT
-            - name: HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: api-js-config
-                  key: HOST
-            - name: LOG_LEVEL
-              valueFrom:
-                configMapKeyRef:
-                  name: api-js-config
-                  key: LOG_LEVEL
+      - name: api-js
+        image: docker.io/hugocortes/api-js
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: api-js-config
+              key: PORT
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              name: api-js-config
+              key: HOST
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: api-js-config
+              key: LOG_LEVEL

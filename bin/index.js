@@ -19,11 +19,11 @@ const manifestOptions = {
   register: {
     plugins
   }
-};;
+};
 
 const glueOptions = {
   relativeTo: `${__dirname}/modules`
-};;
+};
 
 let finalServer = null;
 
@@ -43,7 +43,7 @@ const start = async function() {
     finalServer.route({
       method: 'GET',
       path: '/env',
-      handler: (request, h) => {
+      handler: () => {
         const response = {
           LOG_LEVEL: process.env.LOG_LEVEL,
           PORT: process.env.PORT,
@@ -87,4 +87,4 @@ const stop = async function() {
 module.exports = {
   start,
   stop
-};;
+};

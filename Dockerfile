@@ -12,5 +12,6 @@ RUN npm install --production
 COPY bin/ /app/bin
 COPY app.js /app
 
-EXPOSE 80
+EXPOSE 3000
+
 CMD ["node", "app.js"]

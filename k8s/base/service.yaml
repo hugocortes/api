@@ -8,6 +8,8 @@ spec:
     app: api-js
     role: backend
   ports:
-  - port: 3000
+  - name: http
+    protocol: TCP
+    port: 3000
     nodePort: 31000
     protocol: TCP
