@@ -10,8 +10,8 @@ COPY package-lock.json /app
 RUN npm install --production
 
 COPY bin/ /app/bin
-COPY app.js /app
+COPY index.js /app
 
 EXPOSE 3000
 
-CMD ["node", "app.js"]
+CMD ["node", "index.js"]

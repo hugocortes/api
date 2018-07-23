@@ -48,7 +48,8 @@ const start = async function() {
           LOG_LEVEL: process.env.LOG_LEVEL,
           PORT: process.env.PORT,
           HOST: process.env.HOST,
-          SECRET: process.env.SECRET
+          SECRET: process.env.SECRET,
+          NODE_ENV: process.env.NODE_ENV
         };
 
         return response;

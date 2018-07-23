@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: api-js-config
 data:
+  NODE_ENV: local
   PORT: "3000"
   HOST: "0.0.0.0"
   LOG_LEVEL: debug

@@ -39,3 +39,8 @@ spec:
             configMapKeyRef:
               name: api-js-config
               key: LOG_LEVEL
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: api-js-config
+              key: NODE_ENV
