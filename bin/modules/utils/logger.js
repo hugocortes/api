@@ -6,7 +6,13 @@ const options = {
     warn: 1,
     info: 2,
     verbose: 3,
-    debug: 4
+    debug: 4,
+    db: 5,
+    test: 6
+  },
+  colors: {
+    test: 'bold red cyanBG',
+    db: 'bold white'
   },
   console: {
     timestamp: () => new Date().toLocaleTimeString(),

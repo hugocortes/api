@@ -1,7 +1,6 @@
 {
-  "name": "api",
+  "name": "paprika-api-js",
   "version": "0.0.0",
-  "private": true,
   "dependencies": {
     "boom": "^7.2.0",
     "dotenv": "^5.0.1",
