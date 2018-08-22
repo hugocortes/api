@@ -1,7 +1,13 @@
-# api
-simple api using hapi on nodejs
+# paprika-api-js
+
+cayenne application api in nodejs
+
+Branch | Build Status
+--- | ---
+devel | [![Build Status](https://travis-ci.org/hugocortes/paprika-api-js.svg?branch=devel)](https://travis-ci.org/hugocortes/paprika-api-js)
 
 # Docker
+
 This image is hosted on [Docker Hub](https://hub.docker.com/r/hugocortes/api-js/)
 
 Running:
@@ -17,6 +23,7 @@ docker run -d \
 ```
 
 # Kubernetes
+
 Prereqs:
 * Install [Minikube](https://kubernetes.io/docs/setup/minikube/).
 * Install [Skaffold](https://github.com/GoogleContainerTools/skaffold#installation)
