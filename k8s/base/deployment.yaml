@@ -1,25 +1,25 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: api-js
+  name: paprika-api-js
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-js
+      app: paprika-api-js
       role: backend
       env: local
   template:
     metadata:
-      name: api-js
+      name: paprika-api-js
       labels:
-        app: api-js
+        app: paprika-api-js
         role: backend
         env: local
     spec:
       containers:
-      - name: api-js
-        image: docker.io/hugocortes/api-js
+      - name: paprika-api-js
+        image: docker.io/hugocortes/paprika-api-js
         ports:
         - containerPort: 3000
           protocol: TCP
@@ -27,20 +27,20 @@ spec:
         - name: PORT
           valueFrom:
             configMapKeyRef:
-              name: api-js-config
+              name: paprika-api-js
               key: PORT
         - name: HOST
           valueFrom:
             configMapKeyRef:
-              name: api-js-config
+              name: paprika-api-js
               key: HOST
         - name: LOG_LEVEL
           valueFrom:
             configMapKeyRef:
-              name: api-js-config
+              name: paprika-api-js
               key: LOG_LEVEL
         - name: NODE_ENV
           valueFrom:
             configMapKeyRef:
-              name: api-js-config
+              name: paprika-api-js
               key: NODE_ENV

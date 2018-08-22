@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: api-js
+  name: paprika-api-js
 spec:
   type: NodePort
   selector:
-    app: api-js
+    app: paprika-api-js
     role: backend
   ports:
   - name: http

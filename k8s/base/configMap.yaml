@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: api-js-config
+  name: paprika-api-js
 data:
   NODE_ENV: local
   PORT: "3000"

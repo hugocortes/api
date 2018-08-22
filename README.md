@@ -8,18 +8,18 @@ devel | [![Build Status](https://travis-ci.org/hugocortes/paprika-api-js.svg?bra
 
 # Docker
 
-This image is hosted on [Docker Hub](https://hub.docker.com/r/hugocortes/api-js/)
+This image is hosted on [Docker Hub](https://hub.docker.com/r/hugocortes/paprika-api-js/)
 
 Running:
 ```sh
 docker run -d \
-  --name api-js \
+  --name paprika-api-js \
   -e HOST=0.0.0.0 \
   -e PORT=3000 \
   -e LOG_LEVEL=debug \
   -e SECRET=random \
   -p 3000:3000 \
-  hugocortes/api-js
+  hugocortes/paprika-api-js
 ```
 
 # Kubernetes

@@ -1,5 +1,5 @@
 commonLabels:
-  app: api-js
+  app: paprika-api-js
 bases:
 - ./../base
 patches:
