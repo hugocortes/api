@@ -22,6 +22,8 @@ const options = {
   }
 };
 
+winston.addColors(options.colors);
+
 const logger = new winston.Logger({
   levels: options.levels,
   transports: [new winston.transports.Console(options.console)]
