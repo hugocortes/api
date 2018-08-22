@@ -1,0 +1,16 @@
+sudo: required
+
+language: node_js
+node_js:
+  - "8.6.0"
+
+cache:
+  directories:
+    - node_modules
+
+env:
+  global:
+    - HOST=0.0.0.0
+    - PORT=3000
+    - NODE_ENV=test
+    - LOG_LEVEL=test
