@@ -26,3 +26,4 @@ Prereqs:
 2. `skaffold dev`
 3. Navigate to `http://192.168.99.100:31000/status`
 4. While `skaffold` is running, any changes made will rebuild
+5. `kubectl proxy`
