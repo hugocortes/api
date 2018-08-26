@@ -1,6 +1,0 @@
-commonLabels:
-  app: paprika-api-js
-bases:
-- ./../base
-patches:
-- configMap.yaml
