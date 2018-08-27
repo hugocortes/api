@@ -1,0 +1,17 @@
+FROM arm32v7/node:8-slim
+
+RUN mkdir /app
+RUN mkdir /app/bin
+
+WORKDIR /app
+
+COPY package.json /app
+COPY package-lock.json /app
+RUN npm install --production
+
+COPY bin/ /app/bin
+COPY index.js /app
+
+COPY docker-entrypoint.sh /app
+
+ENTRYPOINT [ "sh", "./docker-entrypoint.sh" ]
