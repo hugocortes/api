@@ -1,4 +1,4 @@
-FROM node:9.11-alpine
+FROM node:9-alpine
 
 RUN mkdir /app
 RUN mkdir /app/bin
@@ -12,6 +12,6 @@ RUN npm install --production
 COPY bin/ /app/bin
 COPY index.js /app
 
-EXPOSE 3000
+COPY docker-entrypoint.sh /app
 
-CMD ["node", "index.js"]
+ENTRYPOINT [ "sh", "./docker-entrypoint.sh" ]
