@@ -4,13 +4,13 @@ const _ = require('lodash');
 
 const Common = require('./common');
 
-let newHelper;
+let newInstance;
 
 /**
  * Inherits Common
  */
-const Helper = {
-  server: null,
+const Server = {
+  hapi: null,
 
   async serverInject(method, path, payload, query, token) {
     const request = {
@@ -28,7 +28,7 @@ const Helper = {
     }
 
     try {
-      return await this.server.inject(request);
+      return await this.hapi.inject(request);
     } catch (error) {
       throw new Error(error);
     }
@@ -36,41 +36,43 @@ const Helper = {
 
   async startServer() {
     this.logger.test('starting server...');
-    if (!_.isNil(this.server)) {
+    if (!_.isNil(this.hapi)) {
       this.logger.test('server previously started...');
-      return this.server;
+      return this.hapi;
     }
 
-    const serverConfig = require('./../../bin');
-    this.server = await serverConfig.start();
+    const serverConfig = require('../../bin');
+    this.hapi = await serverConfig.start();
 
-    return this.server;
+    return this.hapi;
   }
 };
 
-async function helper() {
-  if (!_.isNil(newHelper)) {
-    await newHelper.startServer();
-    return newHelper;
+async function init() {
+  if (!_.isNil(newInstance)) {
+    await newInstance.startServer();
+    return newInstance;
   }
 
-  newHelper = Object.create({
+  newInstance = Object.create({
     logger: Common.logger
   });
 
-  _.forEach(Helper, (val, key) => {
-    newHelper[key] = val;
+  _.forEach(Server, (val, key) => {
+    newInstance[key] = val;
   });
 
-  await newHelper.startServer();
+  await newInstance.startServer();
 
-  _.forEach(newHelper, (val, key) => {
+  _.forEach(newInstance, (val, key) => {
     if (typeof val === 'function') {
-      newHelper[key] = newHelper[key].bind(newHelper);
+      newInstance[key] = newInstance[key].bind(newInstance);
     }
   });
 
-  return newHelper;
+  return newInstance;
 }
 
-module.exports = helper;
+module.exports = {
+  init
+};
