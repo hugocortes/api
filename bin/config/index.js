@@ -2,6 +2,10 @@ const plugins = [
   {
     plugin: './utils',
     options: {}
+  },
+  {
+    plugin: './data',
+    options: {}
   }
 ];
 
