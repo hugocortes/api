@@ -9,6 +9,15 @@ const Common = {
    */
   delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
+  /**
+   * data modules
+   */
+  data: {
+    mongo: require('./../../bin/modules/data/mongo'),
+    sql: require('./../../bin/modules/data/sql'),
+    redis: require('./../../bin/modules/data/redis')
   }
 };
 
