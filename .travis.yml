@@ -8,9 +8,39 @@ cache:
   directories:
     - node_modules
 
+services:
+  - rabbitmq
+  - redis-server
+  - mysql
+  - mongodb
+
 env:
   global:
     - HOST=0.0.0.0
     - PORT=3000
     - NODE_ENV=test
     - LOG_LEVEL=test
+
+    - MYSQL_DB=paprika
+    - MYSQL_USER=root
+    - MYSQL_PASS=
+    - MYSQL_HOST=localhost
+    - MYSQL_PORT=3306
+
+    - MONGO_URI=mongodb://localhost/paprika
+
+    - REDIS_HOST=localhost
+    - REDIS_PORT=6379
+    - REDIS_KEY=paprika
+    - REDIS_PASS=
+
+    - RABBITMQ_URI=amqp://localhost/
+
+before_install:
+  - mysql -e 'CREATE DATABASE paprika;'
+
+script:
+  - node app.js &
+  - sleep 20
+  - pkill node
+  - npm test test/server
