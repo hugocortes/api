@@ -1,4 +1,4 @@
-const { redis } = require('./../conn');
+const redis = require('./conn');
 
 /**
  * setBit sets a bit high or low

@@ -1,4 +1,4 @@
-const { mongoose } = require('./../conn');
+const mongoose = require('./conn');
 
 const Project = new mongoose.Schema({
   user_id: String
