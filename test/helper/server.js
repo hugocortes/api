@@ -50,25 +50,15 @@ const Server = {
 
 async function init() {
   if (!_.isNil(newInstance)) {
-    await newInstance.startServer();
     return newInstance;
   }
 
   newInstance = Object.create({
     logger: Common.logger
   });
-
-  _.forEach(Server, (val, key) => {
-    newInstance[key] = val;
-  });
+  Object.assign(newInstance, Server);
 
   await newInstance.startServer();
-
-  _.forEach(newInstance, (val, key) => {
-    if (typeof val === 'function') {
-      newInstance[key] = newInstance[key].bind(newInstance);
-    }
-  });
 
   return newInstance;
 }
